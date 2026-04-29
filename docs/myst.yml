@@ -1,0 +1,14 @@
+version: 1
+project:
+  id: myst-lightbox
+  title: myst-lightbox
+  github: https://github.com/choldgraf/myst-lightbox
+  plugins:
+    - ../src/index.mjs
+  toc:
+    - file: index.md
+
+site:
+  template: book-theme
+  options:
+    logo_text: myst-lightbox
