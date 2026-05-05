@@ -48,11 +48,18 @@ const injectWidgetTransform = {
       utils.selectAll('image', tree).length > 0 ||
       utils.selectAll('container[kind="figure"]', tree).length > 0;
     if (!hasImages) return;
+    // Wrap in a `block` because thebe execution seems to assume that everything
+    // is a block-level item
     tree.children.push({
-      type: 'anywidget',
-      esm: pathMod.relative(pathMod.dirname(file.path), PLUGIN_PATH),
-      model: {},
-      id: crypto.randomUUID(),
+      type: 'block',
+      children: [
+        {
+          type: 'anywidget',
+          esm: pathMod.relative(pathMod.dirname(file.path), PLUGIN_PATH),
+          model: {},
+          id: crypto.randomUUID(),
+        },
+      ],
     });
   },
 };

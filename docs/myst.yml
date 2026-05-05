@@ -3,10 +3,14 @@ project:
   id: myst-lightbox
   title: myst-lightbox
   github: https://github.com/choldgraf/myst-lightbox
+  jupyter:
+    binder:
+      repo: https://github.com/executablebooks/thebe-binder-base
   plugins:
     - ../src/index.mjs
   toc:
     - file: index.md
+    - file: reference.md
 
 site:
   template: book-theme

@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 22
       - name: Build docs
-        run: npx -y mystmd build --html
+        run: npx -y mystmd build --html --execute
         env:
           BASE_URL: /myst-lightbox/
         working-directory: docs
