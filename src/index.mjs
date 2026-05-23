@@ -9,6 +9,18 @@ const GLIGHTBOX_VERSION = '3.3.0';
 const GLIGHTBOX_CSS = `https://cdn.jsdelivr.net/npm/glightbox@${GLIGHTBOX_VERSION}/dist/css/glightbox.min.css`;
 const GLIGHTBOX_ESM = `https://cdn.jsdelivr.net/npm/glightbox@${GLIGHTBOX_VERSION}/+esm`;
 const LINK_CLASS = 'myst-lightbox-link';
+const STYLE_ID = 'myst-lightbox-style';
+// SVGs rendered via <img> take their intrinsic (often tiny) viewBox size,
+// so the lightbox shows them smaller than they appear on the page. Give SVGs
+// an explicit large box and use object-fit so they scale up while keeping
+// their aspect ratio. Raster images already fit naturally and are left alone.
+const LIGHTBOX_CSS = `
+  .gslide-image img[src*=".svg"] {
+    width: 90vw;
+    height: 85vh;
+    object-fit: contain;
+  }
+`;
 
 async function render({ el }) {
   el.style.display = 'none';
@@ -18,6 +30,12 @@ async function render({ el }) {
     link.rel = 'stylesheet';
     link.href = GLIGHTBOX_CSS;
     document.head.appendChild(link);
+  }
+  if (!document.getElementById(STYLE_ID)) {
+    const style = document.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent = LIGHTBOX_CSS;
+    document.head.appendChild(style);
   }
 
   // Scope to the article body so theme chrome (logos, icons) is excluded.

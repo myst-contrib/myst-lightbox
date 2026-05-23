@@ -44,6 +44,17 @@ This uses the `{image}` role:
 :width: 60%
 ```
 
+## SVG images
+
+SVGs will work with the lightbox, and they'll be artifically blown up in size so that they take up the screen (even if they have a hard-coded size internally).
+
+:::{figure} ./tiny.svg
+:alt: A tiny SVG with small intrinsic size
+:width: 300px
+
+A small-viewBox SVG should still expand to fill the lightbox.
+:::
+
 ## How it works
 
 The plugin loads [GLightbox](https://biati-digital.github.io/glightbox/) from a CDN at page load and wires every figure/image in the page content as a single gallery. Click → open. Arrow keys → next/prev. `+`/`-` → zoom. `Esc` → close.
