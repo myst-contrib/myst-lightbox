@@ -15,6 +15,7 @@ project:
 ```
 
 It will automatically identify each image and figure in your content and make it lightboxed, if no link exists.
+When a MyST element provides a caption (e.g. `{figure}`), it is shown in the lightbox modal too.
 
 For example, click any image below.
 
@@ -54,6 +55,18 @@ SVGs will work with the lightbox, and they'll be artifically blown up in size so
 
 A small-viewBox SVG should still expand to fill the lightbox.
 :::
+
+## A mermaid diagram
+
+```{mermaid}
+graph LR
+    A[User clicks figure] --> B{Has link?}
+    B -->|Yes| C[Skip - already linked]
+    B -->|No| D[Wrap in lightbox anchor]
+    D --> E[GLightbox opens modal]
+    E --> F[Caption shown]
+    E --> G[Zoom / arrow keys]
+```
 
 ## How it works
 
